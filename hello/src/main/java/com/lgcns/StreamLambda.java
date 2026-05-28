@@ -5,12 +5,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StreamLambda {
     public static void main(String[] args) {
         List<String> list = Arrays.asList("JS", "TS", "Java", "JS", "Python", "JS");
         List<String> collect = list.stream().filter(s -> s.length() > 2).collect(Collectors.toList());
         List<String> collect2 = list.stream().filter(s -> s.length() > 2).toList();
+
+        List<Integer> list1 = list.stream().map(String::length).toList();
+        System.out.println("list1 = " + list1);
 
         Map<Integer, List<String>> collect1 = list.stream().collect(Collectors.groupingBy(String::length)); // Collectors.groupingBy(Emp::getDept)
         System.out.println("collect1 = " + collect1);
@@ -25,5 +29,8 @@ public class StreamLambda {
 
         int sum1 = list.stream().mapToInt(String::length).sum();
         System.out.println("sum1 = " + sum1);
+
+        List<Integer> list2 = list.stream().flatMap(s -> Stream.of(s.length(), s.length() + 1)).distinct().toList();
+        System.out.println("list2 = " + list2);
     }
 }
