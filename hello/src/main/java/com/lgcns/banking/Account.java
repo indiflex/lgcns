@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Account {
-    protected BigDecimal balance;
+    protected BigDecimal balance = BigDecimal.ZERO;
 
     public static void main(String[] args) {
         Account free = new FreeAccount();
