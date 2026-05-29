@@ -1,0 +1,7 @@
+@baseUrl=http://localhost:8080/api/posts
+
+### foldername
+GET {{baseUrl}}/foldername
+
+### posts list (/api/posts)
+GET {{baseUrl}}
