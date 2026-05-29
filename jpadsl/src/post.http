@@ -20,5 +20,10 @@ Content-Type: application/json
 PUT {{baseUrl}}/1
 Content-Type: application/json
 
+{
+  "title": "제목22...",
+  "contents": "내용..."
+}
+
 ### post detail
 GET {{baseUrl}}/100

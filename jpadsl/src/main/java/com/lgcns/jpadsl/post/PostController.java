@@ -1,6 +1,8 @@
 package com.lgcns.jpadsl.post;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,27 +14,35 @@ public class PostController {
     private final PostService service;
 
     @GetMapping()
-    public List<PostDTO> getList() {
-//        List<PostDTO> posts = new ArrayList<>();
-//        posts.add(new PostDTO(1L, "title", "hong", "contents..."));
-//        return posts;
-        return service.getPosts();
+    public ResponseEntity<List<PostDTO>> getList() {
+        return ResponseEntity.ok(service.getPosts());
     }
 
     @PostMapping
-    public void createPost(@RequestBody PostCreateDTO dto) {
+    public ResponseEntity<?> createPost(@RequestBody @Validated(PostSaveDTO.OnCreate.class) PostSaveDTO dto) {
         System.out.println("dto = " + dto);
-        service.createPost(dto);
+        return ResponseEntity.ok(service.createPost(dto));
     }
 
     @GetMapping("/{postid}")
-    public PostDTO getPost(@PathVariable Long postid) {
-//        return new PostDTO(postid, "title", "hong", "contents...");
-        return service.getPost(postid);
+    public ResponseEntity<PostDTO> getPost(@PathVariable Long postid) {
+        return ResponseEntity.ok(service.getPost(postid));
+    }
+
+    @PutMapping("/{postid}")
+    public ResponseEntity<PostDTO> editPost(@PathVariable Long postid, @RequestBody @Validated(PostSaveDTO.OnUpdate.class) PostSaveDTO dto) {
+        dto.setId(postid);
+        return ResponseEntity.ok(service.editPost(dto));
+    }
+
+    @DeleteMapping("{postid}")
+    public ResponseEntity<Void> removePost(@PathVariable Long postid) {
+        service.removePost(postid);
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("foldername")
-    public String getFolderName() {
-        return "게시판";
+    public ResponseEntity<String> getFolderName() {
+        return ResponseEntity.ok("게시판");
     }
 }
