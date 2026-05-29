@@ -1,5 +1,6 @@
 package com.lgcns.jpadsl.user;
 
+import com.lgcns.jpadsl.common.Telno;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -13,4 +14,7 @@ public class UserRegistDTO {
 
     @NotBlank(message = "닉네임을 입력하세요!")
     private String nickname;
+
+    @Telno
+    private String telno;
 }
