@@ -6,5 +6,19 @@ GET {{baseUrl}}/foldername
 ### posts list (/api/posts)
 GET {{baseUrl}}
 
+### create post
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "제목...",
+  "writer": "홍길동",
+  "contents": "내용..."
+}
+
+### edit post
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
 ### post detail
 GET {{baseUrl}}/100

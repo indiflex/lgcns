@@ -12,7 +12,7 @@ public class HelloController {
     }
 
     @GetMapping("/say-hello")
-    public String sayHello(@RequestParam String name) {
+    public String sayHello(@RequestParam(required = false) String name) {
         return "Hello, " + name;
     }
 }

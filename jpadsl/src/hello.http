@@ -4,4 +4,4 @@
 GET {{baseUrl}}/hello
 
 ### say-hello
-GET {{baseUrl}}/say-hello?name=jade
+GET {{baseUrl}}/say-hello
