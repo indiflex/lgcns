@@ -1,6 +1,7 @@
 package com.lgcns.jpadsl.post;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,11 @@ public class PostController {
         List<PostDTO> posts = new ArrayList<>();
         posts.add(new PostDTO(1L, "title", "hong", "contents..."));
         return posts;
+    }
+
+    @GetMapping("/{postid}")
+    public PostDTO getPost(@PathVariable Long postid) {
+        return new PostDTO(postid, "title", "hong", "contents...");
     }
 
     @GetMapping("foldername")

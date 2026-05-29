@@ -5,3 +5,6 @@ GET {{baseUrl}}/foldername
 
 ### posts list (/api/posts)
 GET {{baseUrl}}
+
+### post detail
+GET {{baseUrl}}/100
